@@ -1,0 +1,54 @@
+[
+    {
+        "name": "MacBook Pro 2022",
+        "categoryId": 101,
+        "image": "https: //i.ibb.co/R3tPJSM/img5.jpg",
+        "resalePrice": 978,
+        "originalPrice": 1378,
+        "yearOfuse": 1,
+        "sealerName": "jahedul Alam",
+        "postDate": "Nov 24, 2022",
+        "details": "Start your MacBook Pro by lifting the lid and pressing any key. Follow the Setup Assistant prompts, and you’re up and running.",
+        "location": "bagerhat, Khulna"
+    },
+    {
+        "name": "MacBook Pro 2022",
+        "categoryId": 101,
+        "image": "https: //i.ibb.co/bNRwzCY/img6.jpg",
+        "resalePrice": 928,
+        "originalPrice": 1078,
+        "yearOfuse": 2,
+        "sealerName": "jahedul Alam",
+        "postDate": "Nov 22, 2022",
+        "details": "Testing conducted by Apple in June 2019 using preproduction 1.4GHz quad-core Intel Core i5-based 13-inch MacBook Pro systems with 8GB of RAM",
+        "location": "bagerhat, Khulna"
+    },
+    {
+        "name": "MacBook Pro 2022",
+        "categoryId": 102,
+        "image": "https: //i.ibb.co/k3w8YDG/hp3.jpg",
+        "resalePrice": 240,
+        "originalPrice": 548,
+        "yearOfuse": 3,
+        "sealerName": "Karim Billah",
+        "postDate": "Nov 25, 2022",
+        "details": "Testing conducted by Apple in June 2019 using preproduction 1.4GHz quad-core Intel Core i5-based 13-inch MacBook Pro systems with 8GB of RAM",
+        "location": "Kuakata, Borisal"
+    },
+    {
+        "name": "MacBook Pro 2022",
+        "categoryId": 102,
+        "image": "https: //i.ibb.co/N75khHh/hp2.jpg",
+        "resalePrice": 350,
+        "originalPrice": 928,
+        "yearOfuse": 4,
+        "sealerName": "Ratul Hasan",
+        "postDate": "Nov 22, 2022",
+        "details": "Testing conducted by Apple in June 2019 using preproduction 1.4GHz quad-core Intel Core i5-based 13-inch MacBook Pro systems with 8GB of RAM",
+        "location": "Kuakata, Borisal"
+    },
+]
+
+https: //i.ibb.co/DGVfCzF/hp6.jpg
+https: //i.ibb.co/0nLjqvq/hp5.jpg
+https: //i.ibb.co/nb3stVR/hp4.jpg
