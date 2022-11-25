@@ -19,7 +19,7 @@ const MyProductsTable = ({ product, index, deleteHandle }) => {
                 </div>
             </td>
             <td>{productName}</td>
-            <td>Available</td>
+            <td>{product?.payment ? <p className='text-error'>Sold Out</p> : <p>Available</p>}</td>
             <td><button><FaTrash className='text-orange-500 text-xl' onClick={() => deleteHandle(product?._id)} /></button></td>
         </tr>
     );

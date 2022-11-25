@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import Spinner from '../../../Componemts/Spinner';
 import { AuthContex } from '../../../Contex/AuthProvider';
@@ -10,13 +10,12 @@ const MyProducts = () => {
     const { loginUser } = useContext(AuthContex)
 
     const { data: myProduct = [], isLoading, refetch } = useQuery({
-        queryKey: [],
+        queryKey: ['myProduct'],
         queryFn: async () => {
             const data = await axios.get(`http://localhost:5000/myProduct/${loginUser?.email}`)
             return data.data;
         }
     })
-    console.log(myProduct);
 
     if (isLoading) {
         return <Spinner />

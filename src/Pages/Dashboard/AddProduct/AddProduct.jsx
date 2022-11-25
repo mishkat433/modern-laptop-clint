@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { format } from 'date-fns';
 import { AuthContex } from '../../../Contex/AuthProvider';
 import SmallSpinner from '../../../Componemts/SmallSpinner';
+import { useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
     const { loginUser } = useContext(AuthContex)
@@ -16,6 +17,8 @@ const AddProduct = () => {
     });
     const [image, setImage] = useState(null);
     const [sending, setSending] = useState(false);
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         axios.get('https://modern-laptop-server.vercel.app/categories')
@@ -50,6 +53,7 @@ const AddProduct = () => {
         if (response && response.data.insertedId) {
             toast.success('product added successful')
             setSending(false)
+            navigate('/dashboard/myProduct')
         }
     }
 

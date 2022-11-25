@@ -12,6 +12,7 @@ import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
+import Payment from "../../Pages/Dashboard/Payment/Payment";
 
 const routes = createBrowserRouter([
     {
@@ -65,6 +66,10 @@ const routes = createBrowserRouter([
             {
                 path: '/dashboard/myProduct',
                 element: <PrivateRoute><MyProducts /></PrivateRoute>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <PrivateRoute><Payment /></PrivateRoute>
             }
         ]
     }
