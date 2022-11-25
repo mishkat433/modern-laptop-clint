@@ -31,11 +31,14 @@ const Sidebar = () => {
                 {
                     checkUser === 'sealer' &&
                     <ul className="menu p-4  bg-base-100 text-base-content ">
+                        <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold bg-gray-200 mb-2" : "mb-2"} to="/dashboard/addProduct"><FcPlus className='text-2xl' />  Add Product</NavLink></li>
                         <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold bg-gray-200 mb-2" : "mb-2"} to="/dashboard/myOrders"><FcFilingCabinet className='text-2xl' />My Orders</NavLink></li>
+                        <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold bg-gray-200 mb-2" : "mb-2"} to="/dashboard/myProduct"><FcAcceptDatabase className='text-2xl' />My Orders</NavLink></li>
+                        <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold bg-gray-200 mb-2" : "mb-2"} to="/dashboard/myProduct"><FcTodoList className='text-2xl' />My Buyers</NavLink></li>
                     </ul>
                 }
                 {
-                    checkUser === 'sealer' &&
+                    checkUser === 'admin' &&
                     <ul className="menu p-4  bg-base-100 text-base-content ">
                         <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold bg-gray-200 mb-2" : "mb-2"} to="/dashboard/addProduct"><FcPlus className='text-2xl' />  Add Product</NavLink></li>
                         <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold bg-gray-200 mb-2" : "mb-2"} to="/admin/allProduct"><FcFilingCabinet className='text-2xl' />  All Product</NavLink></li>

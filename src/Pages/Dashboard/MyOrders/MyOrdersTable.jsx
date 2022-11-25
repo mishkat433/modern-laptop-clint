@@ -1,12 +1,18 @@
 import React from 'react';
+import { FaTrash } from 'react-icons/fa';
 
-const MyOrdersTable = () => {
+const MyOrdersTable = ({ order, index, deleteHandle }) => {
+    const { productImage, choseProductName, choseProductPrice, payment, _id } = order;
     return (
         <tr>
-            <th>1</th>
-            <td>Cy Ganderton</td>
-            <td>Quality Control Specialist</td>
-            <td>Blue</td>
+            <td>{index + 1}</td>
+            <td>
+                <img className='h-20 w-32' src={productImage} alt="" />
+            </td>
+            <td>{choseProductName}</td>
+            <td>${choseProductPrice}</td>
+            <td><button className='btn btn-sm bg-orange-500 border-none'>{payment === 'pay' ? "pay" : "paid"}</button></td>
+            <td><button><FaTrash className='text-orange-500 text-xl' onClick={() => deleteHandle(_id)} /></button></td>
         </tr>
     );
 };

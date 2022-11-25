@@ -1,17 +1,45 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import Spinner from '../../../Componemts/Spinner';
 import { AuthContex } from '../../../Contex/AuthProvider';
+import useCheckUser from '../../../hooks/useCheckUser';
+import MyOrdersTable from './MyOrdersTable';
 
 const MyOrders = () => {
     const { loginUser } = useContext(AuthContex)
-    const { } = useQuery({
-        queryKey: [],
-        queryFn: async () => {
-            const result = await axios.get(`http://localhost:5000/myBooking/${loginUser?.email}`)
-            return result
+    const [checkUser, userCheckLoading] = useCheckUser(loginUser?.email)
+    const [myOrder, setMyOrder] = useState([])
+    const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        if (checkUser) {
+            fetch(`http://localhost:5000/myBooking/${loginUser?.email}`)
+                .then(res => res.json())
+                .then(data => {
+                    setMyOrder(data)
+                })
         }
-    })
+    }, [loginUser?.email, checkUser, loading])
+
+    if (userCheckLoading) {
+        return <Spinner />
+    }
+
+    const deleteHandle = (id) => {
+        const confirm = window.confirm("do you want to delete this product?")
+        if (confirm) {
+            axios.delete(`http://localhost:5000/deleteBooking/${id}`)
+                .then(response => {
+                    setLoading(!loading)
+                    toast.success(('Delete successful'))
+                })
+                .catch(error => {
+                    toast.error('There was an error!', error.message);
+                });
+        }
+    }
 
     return (
         <div className='my-5 p-2'>
@@ -20,16 +48,18 @@ const MyOrders = () => {
                 <table className="table w-full">
                     <thead>
                         <tr className='bg-blue-400'>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>SL.No</th>
+                            <th>Image</th>
+                            <th>Product Title</th>
+                            <th>Price</th>
+                            <th>Payment</th>
+                            <th>action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {
-
-                       } */}
+                        {
+                            myOrder.map((order, index) => <MyOrdersTable order={order} key={order?._id} index={index} deleteHandle={deleteHandle} />)
+                        }
                     </tbody>
                 </table>
             </div>

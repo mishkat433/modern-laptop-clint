@@ -5,6 +5,7 @@ import { AuthContex } from '../../Contex/AuthProvider';
 
 const PrivateRoute = ({ children }) => {
     const { loginUser, loading } = useContext(AuthContex);
+
     const location = useLocation()
     if (loading) {
         return <Spinner />
