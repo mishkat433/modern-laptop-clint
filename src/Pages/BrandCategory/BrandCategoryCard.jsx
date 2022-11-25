@@ -1,20 +1,21 @@
-import { async } from '@firebase/util';
-import { useQuery } from '@tanstack/react-query';
+// import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { FaLocationArrow } from 'react-icons/fa';
-import axios from 'axios';
+// import axios from 'axios';
 
-const BrandCategoryCard = ({ singleProduct }) => {
+const BrandCategoryCard = ({ singleProduct, setSelectProduct }) => {
     const { productName, originalPrice, resellPrice, useTime, details, date, condition, phoneNumber, sealerEmail, sealerName, location } = singleProduct.productInfo;
 
-    const { data: user = [] } = useQuery({
-        queryKey: ['saveUser'],
-        queryFn: async () => {
-            const data = await axios.get(`http://localhost:5000/saveUser?email=${sealerEmail}`)
-            return data.data;
-        }
-    })
-    console.log(user.verify);
+
+
+    // const { data: user = [] } = useQuery({
+    //     queryKey: ['saveUser'],
+    //     queryFn: async () => {
+    //         const data = await axios.get(`http://localhost:5000/saveUser?email=${sealerEmail}`)
+    //         return data.data;
+    //     }
+    // })
+
 
     return (
         <div className="card  bg-base-100 shadow-xl">
@@ -30,7 +31,8 @@ const BrandCategoryCard = ({ singleProduct }) => {
                 </div>
                 <p className=' text-justify '>{details}</p>
                 <div className='flex justify-between flex-wrap'>
-                    <h4 className='flex items-center gap-2'>Post by :  {user?.verify === 'verified' ? <input type="checkbox" checked className="checkbox checkbox-success h-4 w-4" /> : undefined}{sealerName} </h4>
+
+                    <h4>Posted by : {sealerName} </h4>
                     <h4>Email : {sealerEmail} </h4>
 
                 </div>
@@ -44,7 +46,7 @@ const BrandCategoryCard = ({ singleProduct }) => {
                     <h4 className='font-semibold'>Phone : {phoneNumber}</h4>
                 </div>
                 <div className="card-actions justify-center mt-3">
-                    <button className="btn btn-primary w-full">Buy Now</button>
+                    <label label htmlFor="booking-modal" className="btn btn-primary w-full" onClick={() => setSelectProduct(singleProduct)} >Buy Now</label>
                 </div>
             </div>
         </div >

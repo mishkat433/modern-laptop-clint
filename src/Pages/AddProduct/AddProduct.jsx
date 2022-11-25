@@ -18,7 +18,7 @@ const AddProduct = () => {
     const [sending, setSending] = useState(false);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/categories')
+        axios.get('https://modern-laptop-server.vercel.app/categories')
             .then(result => setCategorys(result.data))
     }, [])
 
@@ -45,7 +45,7 @@ const AddProduct = () => {
 
     const addProductInDB = async (productInfo) => {
         const response = await axios
-            .post('http://localhost:5000/addProduct', productInfo)
+            .post('https://modern-laptop-server.vercel.app/addProduct', productInfo)
             .catch((error) => console.log('Error: ', error));
         if (response && response.data.insertedId) {
             toast.success('product added successful')

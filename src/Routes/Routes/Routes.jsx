@@ -7,6 +7,7 @@ import NotFound from "../../Pages/NotFound/NotFound";
 import AddProduct from "../../Pages/AddProduct/AddProduct";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import BrandCategory from "../../Pages/BrandCategory/BrandCategory";
+import Blog from "../../Pages/Blog/Blog";
 
 const routes = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ const routes = createBrowserRouter([
             {
                 path: "/login",
                 element: <Login />
+            },
+            {
+                path: "/blog",
+                element: <Blog />
             },
             {
                 path: "/addProducts",
