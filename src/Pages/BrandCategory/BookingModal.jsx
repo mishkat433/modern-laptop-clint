@@ -3,6 +3,7 @@ import { AuthContex } from '../../Contex/AuthProvider';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import SmallSpinner from '../../Componemts/SmallSpinner';
+import { useNavigate } from 'react-router-dom';
 
 const BookingModal = ({ selectProduct, setClose }) => {
     const { loginUser } = useContext(AuthContex)
@@ -12,6 +13,7 @@ const BookingModal = ({ selectProduct, setClose }) => {
     })
     const [loading, setLoading] = useState(false)
 
+    const navigate = useNavigate()
 
     const bookingHandle = (e) => {
         setLoading(true)
@@ -36,10 +38,11 @@ const BookingModal = ({ selectProduct, setClose }) => {
                 toast.error('Error: ', error.message)
             });
         if (response && response.data.insertedId) {
-            toast.success('Booking successful')
+            toast.success('Booking successful, Please pay for confirm')
             setLoading(false)
             e.target.reset()
             setClose(false)
+            navigate('/dashboard/myOrders')
         }
     }
 

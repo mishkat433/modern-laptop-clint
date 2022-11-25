@@ -4,12 +4,12 @@ import { FaTrash } from 'react-icons/fa';
 const MyProductsTable = ({ product, index, deleteHandle }) => {
     const { productName, resellPrice, sealerName, date, location } = product?.productInfo;
     return (
-        <tr>
+        <tr className='text-center'>
             <td>{index + 1}</td>
             <td>
                 <div className='flex gap-3'>
                     <img className='h-20 w-32' src={product?.image} alt="" />
-                    <div>
+                    <div className='text-start'>
                         <h4 className='text-xl font-bold'> </h4>
                         <h4 className='text-md'>Sealer Name : {sealerName}</h4>
                         <h4 className='text-md'>Sell Price : {resellPrice}</h4>

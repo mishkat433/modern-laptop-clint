@@ -12,7 +12,7 @@ const MyProducts = () => {
     const { data: myProduct = [], isLoading, refetch } = useQuery({
         queryKey: ['myProduct'],
         queryFn: async () => {
-            const data = await axios.get(`http://localhost:5000/myProduct/${loginUser?.email}`)
+            const data = await axios.get(`https://modern-laptop-server.vercel.app/myProduct/${loginUser?.email}`)
             return data.data;
         }
     })
@@ -24,7 +24,7 @@ const MyProducts = () => {
     const deleteHandle = (id) => {
         const confirm = window.confirm("do you want to delete this product?")
         if (confirm) {
-            axios.delete(`http://localhost:5000/deleteProduct/${id}`)
+            axios.delete(`https://modern-laptop-server.vercel.app/deleteProduct/${id}`)
                 .then(response => {
                     if (response.data.deletedCount > 0) {
                         refetch()
@@ -43,9 +43,9 @@ const MyProducts = () => {
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
-                        <tr className='bg-blue-400'>
+                        <tr className='bg-blue-400 text-center'>
                             <th>SL.No</th>
-                            <th>Image</th>
+                            <th>Details</th>
                             <th>Product Name</th>
                             <th>Status</th>
                             <th>action</th>

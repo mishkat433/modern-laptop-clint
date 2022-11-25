@@ -27,6 +27,11 @@ const MyOrders = () => {
         return <Spinner />
     }
 
+    if (myOrder.length === 0) {
+        return <h4 className='text-4xl font-bold text-center text-red-500'>NO Orders found</h4>
+    }
+
+
     const deleteHandle = (id) => {
         const confirm = window.confirm("do you want to delete this product?")
         if (confirm) {

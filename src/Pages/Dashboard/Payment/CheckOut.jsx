@@ -1,6 +1,7 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import SmallSpinner from '../../../Componemts/SmallSpinner';
 
 const CheckOut = ({ bookingPayment }) => {
@@ -13,6 +14,8 @@ const CheckOut = ({ bookingPayment }) => {
     const { choseProductPrice, bookingData, productId, _id } = bookingPayment;
     const { userName, userEmail } = bookingData;
     const [processing, setProcessing] = useState(false)
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetch('http://localhost:5000/create-payment', {
@@ -90,6 +93,7 @@ const CheckOut = ({ bookingPayment }) => {
                         setSuccess("Congrats! your payment completed")
                         toast.success("Congrats! your payment completed")
                         setTranId(paymentIntent.id)
+                        navigate("/dashboard/myOrders")
                     }
                 })
         }
@@ -122,8 +126,8 @@ const CheckOut = ({ bookingPayment }) => {
                 {processing && <SmallSpinner />}
             </form>
             {cardError && <p className='text-red-500 my-5'>{cardError}</p>}
-            {success && <p className='text-green-500 mt-5 text-xl'>{success}</p>}
-            {tranId && <p className='text-green-500 text-xl'>your transaction Id : {tranId}</p>}
+            {success && <p className='text-blue-500 mt-5 text-xl'>{success}</p>}
+            {tranId && <p className='text-blue-500 text-xl'>Your transaction Id is : {tranId}</p>}
         </>
     );
 };

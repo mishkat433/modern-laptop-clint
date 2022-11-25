@@ -13,6 +13,10 @@ import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import Payment from "../../Pages/Dashboard/Payment/Payment";
+import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
+import AdminRoute from "../AdminRoute/AdminRoute";
+import SeallerRoute from "../SeallerRoute/SeallerRoute";
+
 
 const routes = createBrowserRouter([
     {
@@ -57,7 +61,11 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/dashboard/addProduct',
-                element: <PrivateRoute><AddProduct /></PrivateRoute>
+                element: <SeallerRoute><AddProduct /></SeallerRoute>
+            },
+            {
+                path: '/dashboard/addProduct',
+                element: <AdminRoute><AddProduct /></AdminRoute>
             },
             {
                 path: '/dashboard/myOrders',
@@ -65,11 +73,19 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/dashboard/myProduct',
-                element: <PrivateRoute><MyProducts /></PrivateRoute>
+                element: <AdminRoute><MyProducts /></AdminRoute>
+            },
+            {
+                path: '/dashboard/myProduct',
+                element: <SeallerRoute><MyProducts /></SeallerRoute>
             },
             {
                 path: '/dashboard/payment/:id',
                 element: <PrivateRoute><Payment /></PrivateRoute>
+            },
+            {
+                path: '/dashboard/allUsers',
+                element: <AdminRoute><AllUsers /></AdminRoute>
             }
         ]
     }

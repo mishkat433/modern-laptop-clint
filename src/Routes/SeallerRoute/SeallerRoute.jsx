@@ -4,7 +4,7 @@ import Spinner from '../../Componemts/Spinner';
 import { AuthContex } from '../../Contex/AuthProvider';
 import useCheckUser from '../../hooks/useCheckUser';
 
-const AdminRoute = ({ children }) => {
+const SeallerRoute = ({ children }) => {
     const { loginUser, loading } = useContext(AuthContex);
     const [checkUser, userCheckLoading] = useCheckUser(loginUser?.email)
 
@@ -12,10 +12,10 @@ const AdminRoute = ({ children }) => {
     if (loading || userCheckLoading) {
         return <Spinner />
     }
-    if (loginUser?.uid && checkUser === 'admin') {
+    if (loginUser?.uid && checkUser === 'sealer') {
         return children
     }
     return <Navigate to='/login' state={{ from: location }} replace />
 };
 
-export default AdminRoute;
+export default SeallerRoute;
