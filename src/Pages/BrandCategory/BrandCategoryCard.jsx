@@ -1,20 +1,17 @@
-// import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaLocationArrow } from 'react-icons/fa';
-// import axios from 'axios';
 
-const BrandCategoryCard = ({ singleProduct, setSelectProduct }) => {
+const BrandCategoryCard = ({ singleProduct, setSelectProduct, setClose }) => {
     const { productName, originalPrice, resellPrice, useTime, details, date, condition, phoneNumber, sealerEmail, sealerName, location } = singleProduct.productInfo;
+    const [findVerify, setFindVerify] = useState([])
 
-
-
-    // const { data: user = [] } = useQuery({
-    //     queryKey: ['saveUser'],
-    //     queryFn: async () => {
-    //         const data = await axios.get(`http://localhost:5000/saveUser?email=${sealerEmail}`)
-    //         return data.data;
-    //     }
-    // })
+    useEffect(() => {
+        fetch(`http://localhost:5000/saveUser?email=${sealerEmail}`)
+            .then(res => res.json())
+            .then(data => {
+                setFindVerify(data[0])
+            })
+    }, [sealerEmail])
 
 
     return (
@@ -30,9 +27,8 @@ const BrandCategoryCard = ({ singleProduct, setSelectProduct }) => {
                     }
                 </div>
                 <p className=' text-justify '>{details}</p>
-                <div className='flex justify-between flex-wrap'>
-
-                    <h4>Posted by : {sealerName} </h4>
+                <div className='flex justify-between items-start flex-wrap'>
+                    <h4>Posted by : {sealerName} {findVerify?.verify === 'verified' ? <input type="checkbox" checked className="checkbox checkbox-success h-4 w-4" readOnly /> : undefined} </h4>
                     <h4>Email : {sealerEmail} </h4>
 
                 </div>
@@ -45,8 +41,8 @@ const BrandCategoryCard = ({ singleProduct, setSelectProduct }) => {
                     <h4 className='text-gray-500'>Post : {date}</h4>
                     <h4 className='font-semibold'>Phone : {phoneNumber}</h4>
                 </div>
-                <div className="card-actions justify-center mt-3">
-                    <label label htmlFor="booking-modal" className="btn btn-primary w-full" onClick={() => setSelectProduct(singleProduct)} >Buy Now</label>
+                <div className="card-actions justify-center mt-3" onClick={() => setClose(true)}>
+                    <label htmlFor="booking-modal" className="btn btn-primary w-full" onClick={() => setSelectProduct(singleProduct)} >Buy Now</label>
                 </div>
             </div>
         </div >

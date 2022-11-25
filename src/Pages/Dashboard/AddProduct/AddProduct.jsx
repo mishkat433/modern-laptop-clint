@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { AuthContex } from '../../Contex/AuthProvider';
 import toast from 'react-hot-toast';
 import { format } from 'date-fns';
-import SmallSpinner from '../../Componemts/SmallSpinner';
+import { AuthContex } from '../../../Contex/AuthProvider';
+import SmallSpinner from '../../../Componemts/SmallSpinner';
 
 const AddProduct = () => {
     const { loginUser } = useContext(AuthContex)

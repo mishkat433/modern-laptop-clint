@@ -10,7 +10,6 @@ const CategoryCard = ({ category }) => {
                 <hr />
                 <div className="p-3 text-center">
                     <h2 className="text-2xl font-bold mb-2">{heading} </h2>
-                    {/* <p className='mb-3'>{text.slice(0, 50)} </p> */}
                 </div>
             </div>
         </Link>

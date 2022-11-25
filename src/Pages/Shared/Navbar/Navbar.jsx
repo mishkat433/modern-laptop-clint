@@ -12,8 +12,9 @@ const Navbar = () => {
         <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold" : undefined} to="/home">Home</NavLink></li>
         <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold" : undefined} to="/blog">Blog</NavLink></li>
         {
-            loginUser?.uid && <div className='flex flex-col lg:flex-row'>
-                <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold" : undefined} to="/addProducts">Add Product</NavLink></li>
+            loginUser?.uid && <div className='flex flex-col lg:flex-row lg:items-center'>
+                <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold" : undefined} to="/dashboard">Dashboard</NavLink></li>
+                <li> <button onClick={() => logout()} className=" btn btn-md bg-orange-400 ml-3 border-none text-white hover:bg-orange-500">Logout </button></li>
             </div>
         }
     </>

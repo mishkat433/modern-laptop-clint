@@ -26,18 +26,6 @@
     {
         "name": "MacBook Pro 2022",
         "categoryId": 102,
-        "image": "https: //i.ibb.co/k3w8YDG/hp3.jpg",
-        "resalePrice": 240,
-        "originalPrice": 548,
-        "yearOfuse": 3,
-        "sealerName": "Karim Billah",
-        "postDate": "Nov 25, 2022",
-        "details": "Testing conducted by Apple in June 2019 using preproduction 1.4GHz quad-core Intel Core i5-based 13-inch MacBook Pro systems with 8GB of RAM",
-        "location": "Kuakata, Borisal"
-    },
-    {
-        "name": "MacBook Pro 2022",
-        "categoryId": 102,
         "image": "https: //i.ibb.co/N75khHh/hp2.jpg",
         "resalePrice": 350,
         "originalPrice": 928,
