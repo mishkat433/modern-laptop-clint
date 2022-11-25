@@ -11,6 +11,7 @@ import DashboardLayout from "../../Pages/Layout/DashboardLayout";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
+import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 
 const routes = createBrowserRouter([
     {
@@ -46,7 +47,7 @@ const routes = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashboardLayout />,
+        element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
         errorElement: <NotFound />,
         children: [
             {
@@ -55,11 +56,15 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/dashboard/addProduct',
-                element: <AddProduct />
+                element: <PrivateRoute><AddProduct /></PrivateRoute>
             },
             {
                 path: '/dashboard/myOrders',
-                element: <MyOrders />
+                element: <PrivateRoute><MyOrders /></PrivateRoute>
+            },
+            {
+                path: '/dashboard/myProduct',
+                element: <PrivateRoute><MyProducts /></PrivateRoute>
             }
         ]
     }

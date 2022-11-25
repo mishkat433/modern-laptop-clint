@@ -33,8 +33,8 @@ const Sidebar = () => {
                     <ul className="menu p-4  bg-base-100 text-base-content ">
                         <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold bg-gray-200 mb-2" : "mb-2"} to="/dashboard/addProduct"><FcPlus className='text-2xl' />  Add Product</NavLink></li>
                         <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold bg-gray-200 mb-2" : "mb-2"} to="/dashboard/myOrders"><FcFilingCabinet className='text-2xl' />My Orders</NavLink></li>
-                        <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold bg-gray-200 mb-2" : "mb-2"} to="/dashboard/myProduct"><FcAcceptDatabase className='text-2xl' />My Orders</NavLink></li>
-                        <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold bg-gray-200 mb-2" : "mb-2"} to="/dashboard/myProduct"><FcTodoList className='text-2xl' />My Buyers</NavLink></li>
+                        <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold bg-gray-200 mb-2" : "mb-2"} to="/dashboard/myProduct"><FcAcceptDatabase className='text-2xl' />My Products</NavLink></li>
+                        <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold bg-gray-200 mb-2" : "mb-2"} to="/dashboard/myBuyers"><FcTodoList className='text-2xl' />My Buyers</NavLink></li>
                     </ul>
                 }
                 {
