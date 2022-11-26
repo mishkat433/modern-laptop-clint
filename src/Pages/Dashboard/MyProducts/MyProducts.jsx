@@ -31,8 +31,8 @@ const MyProducts = () => {
             axios.delete(`https://modern-laptop-server.vercel.app/deleteProduct/${id}`)
                 .then(response => {
                     if (response.data.addAdvertise > 0) {
-                        refetch()
                         toast.success(('Delete successful'))
+                        refetch()
                     }
                 })
                 .catch(error => {

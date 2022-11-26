@@ -32,7 +32,7 @@ const BrandCategory = () => {
     return (
         <div className='w-11/12 mx-auto'>
             <div className='bg-gradient-to-r from-orange-500 to-blue-500 h-[200px] rounded-md flex justify-center items-center'>
-                <h1 className='text-3xl lg:text-5xl font-bold text-center text-white'>Don't miss our products, never get them later</h1>
+                <h1 className='text-3xl lg:text-5xl font-bold text-white'>Don't miss our products, never get them later</h1>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-20'>
                 {
