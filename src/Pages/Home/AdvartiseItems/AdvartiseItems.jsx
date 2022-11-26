@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import React from 'react';
 import Spinner from '../../../Componemts/Spinner';
 import BookingModal from '../../BrandCategory/BookingModal';
 import AdvertiseCard from './AdvertiseCard';
