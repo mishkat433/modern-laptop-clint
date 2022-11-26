@@ -8,8 +8,8 @@ import Navbar from '../Shared/Navbar/Navbar';
 import Sidebar from '../Shared/Sidebar/Sidebar';
 
 const DashboardLayout = () => {
-    const { loginUser } = useContext(AuthContex)
-    const [checkUser, userCheckLoading] = useCheckUser(loginUser?.email)
+    const { loginUser, logout } = useContext(AuthContex)
+    const [checkUser, userCheckLoading] = useCheckUser(loginUser?.email, logout)
     console.log(checkUser);
     return (
         <div >

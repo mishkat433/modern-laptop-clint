@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -8,8 +7,8 @@ import useCheckUser from '../../../hooks/useCheckUser';
 import MyOrdersTable from './MyOrdersTable';
 
 const MyOrders = () => {
-    const { loginUser } = useContext(AuthContex)
-    const [checkUser, userCheckLoading] = useCheckUser(loginUser?.email)
+    const { loginUser, logout } = useContext(AuthContex)
+    const [checkUser, userCheckLoading] = useCheckUser(loginUser?.email, logout)
     const [myOrder, setMyOrder] = useState([])
     const [loading, setLoading] = useState(false)
 

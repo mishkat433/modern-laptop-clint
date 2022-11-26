@@ -7,8 +7,8 @@ import useCheckUser from '../../../hooks/useCheckUser';
 import Spinner from '../../../Componemts/Spinner';
 
 const Sidebar = () => {
-    const { loginUser } = useContext(AuthContex)
-    const [checkUser, userCheckLoading] = useCheckUser(loginUser?.email)
+    const { loginUser, logout } = useContext(AuthContex)
+    const [checkUser, userCheckLoading] = useCheckUser(loginUser?.email, logout)
 
     if (userCheckLoading) {
         return <Spinner />

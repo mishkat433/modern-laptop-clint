@@ -5,7 +5,6 @@ import { format } from 'date-fns';
 import { AuthContex } from '../../../Contex/AuthProvider';
 import SmallSpinner from '../../../Componemts/SmallSpinner';
 import { useNavigate } from 'react-router-dom';
-import el from 'date-fns/esm/locale/el/index.js';
 
 const AddProduct = () => {
     const { loginUser } = useContext(AuthContex)

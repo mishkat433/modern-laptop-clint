@@ -94,12 +94,12 @@ const routes = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <PrivateRoute><AdminLayout /></PrivateRoute>,
+        element: <AdminRoute><AdminLayout /></AdminRoute>,
         errorElement: <NotFound />,
         children: [
             {
                 path: '/dashboard',
-                element: <PrivateRoute><Dashboard /></PrivateRoute>
+                element: <AdminRoute><Dashboard /></AdminRoute>
             },
             {
                 path: '/dashboard/addProduct',

@@ -21,7 +21,6 @@ const SocilaLogin = () => {
                 const userType = 'user';
                 const currentUser = {
                     email: user.email,
-                    name: user.displayName
                 }
                 fetch('http://localhost:5000/jwt', {
                     method: "POST",
@@ -31,8 +30,8 @@ const SocilaLogin = () => {
                     body: JSON.stringify(currentUser)
                 }).then(res => res.json())
                     .then(data => {
-                        localStorage.setItem("laptop-token", data.token)
-                        checkAlreadyLogin(user?.name, user?.email, user?.photoURL, userType)
+                        localStorage.setItem("laptop-token", data.accessToken)
+                        checkAlreadyLogin(user?.displayName, user?.email, user?.photoURL, userType)
                         navigate(from, { replace: true })
                     })
                 setError("")
@@ -41,6 +40,7 @@ const SocilaLogin = () => {
     }
 
     const checkAlreadyLogin = (name, email, photo, userType) => {
+        console.log(name);
         fetch(`http://localhost:5000/saveUser?email=${email}`)
             .then(res => res.json())
             .then(data => {

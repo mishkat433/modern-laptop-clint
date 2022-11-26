@@ -32,6 +32,7 @@ const Register = () => {
             .then(photo => {
                 createUser(data?.email, data?.password)
                     .then(result => {
+                        const userType = 'user';
                         const user = result.user;
                         const currentUser = {
                             email: user.email
@@ -46,8 +47,8 @@ const Register = () => {
                                     body: JSON.stringify(currentUser)
                                 }).then(res => res.json())
                                     .then(data => {
-                                        localStorage.setItem("laptop-token", data.token)
-                                        saveLoginUser(data?.name, data?.email, photo?.data?.display_url, data?.userType)
+                                        localStorage.setItem("laptop-token", data.accessToken)
+                                        saveLoginUser(user?.displayName, user?.email, photo?.data?.display_url, userType)
                                     })
                             }).catch((error) => {
                                 console.log(error.message)
@@ -63,6 +64,7 @@ const Register = () => {
     }
 
     const saveLoginUser = (name, email, photo, userType) => {
+        // console.log(name, email, photo, userType);
         const user = { name, email, photo, userType, verify: "notVerified" }
         fetch('http://localhost:5000/saveUser', {
             method: "POST",

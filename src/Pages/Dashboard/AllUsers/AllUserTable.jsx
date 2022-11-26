@@ -7,7 +7,7 @@ const AllUserTable = ({ user, index, verifyHandle, makeAdminHandle, deleteUserHa
             <td>{index + 1}</td>
             <td className='flex gap-2'>
                 <p>{user?.name}</p>
-                <p>{user?.verify === 'verified' && <input type="checkbox" checked className="checkbox h-4 w-4 checkbox-success" />}</p>
+                <p>{user?.verify === 'verified' && <input type="checkbox" checked className="checkbox h-4 w-4 checkbox-success" readOnly />}</p>
 
             </td>
             <td>{user?.email}</td>

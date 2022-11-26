@@ -39,9 +39,11 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
+
                     {
                         loginUser?.uid ?
                             <div className='flex items-center'>
+
                                 <div className="dropdown dropdown-bottom dropdown-end ">
                                     <label tabIndex={0} className=" flex items-center gap-3">
                                         <img className='w-10 h-10 rounded-full' src={loginUser?.photoURL ? loginUser?.photoURL : notFound} alt="User" />
