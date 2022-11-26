@@ -12,7 +12,7 @@ const Payment = () => {
     const id = params.id;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/singleBooking/${id}`)
+        fetch(`https://modern-laptop-server.vercel.app/singleBooking/${id}`)
             .then(res => res.json())
             .then(data => {
                 setBookingPayment(data);

@@ -47,7 +47,7 @@ const MyProducts = () => {
         const confirm = window.confirm("do you want to Advertise this product?")
         const headers = { authorization: `Bearer ${localStorage.getItem("laptop-token")}` }
         if (confirm) {
-            axios.put(`http://localhost:5000/productAdvertise/${id}?email=${loginUser?.email}`, id, { headers })
+            axios.put(`https://modern-laptop-server.vercel.app/productAdvertise/${id}?email=${loginUser?.email}`, id, { headers })
                 .then(response => {
                     if (response.data.modifiedCount > 0) {
 

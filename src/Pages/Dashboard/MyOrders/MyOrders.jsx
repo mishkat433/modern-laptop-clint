@@ -14,7 +14,7 @@ const MyOrders = () => {
 
     useEffect(() => {
         if (checkUser) {
-            fetch(`http://localhost:5000/myBooking/${loginUser?.email}?email=${loginUser?.email}`, {
+            fetch(`https://modern-laptop-server.vercel.app/myBooking/${loginUser?.email}?email=${loginUser?.email}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem("laptop-token")}`
                 }
@@ -38,7 +38,7 @@ const MyOrders = () => {
     const deleteHandle = (id) => {
         const confirm = window.confirm("do you want to delete this product?")
         if (confirm) {
-            axios.delete(`http://localhost:5000/deleteBooking/${id}`)
+            axios.delete(`https://modern-laptop-server.vercel.app/deleteBooking/${id}`)
                 .then(response => {
                     if (response.data.deletedCount > 0) {
                         setLoading(!loading)

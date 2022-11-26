@@ -48,7 +48,7 @@ const AddProduct = () => {
 
     const addProductInDB = async (productInfo) => {
         const response = await axios
-            .post(`http://localhost:5000/addProduct?email=${loginUser?.email}`, productInfo, { headers: { authorization: `Bearer ${localStorage.getItem("laptop-token")}` } })
+            .post(`https://modern-laptop-server.vercel.app/addProduct?email=${loginUser?.email}`, productInfo, { headers: { authorization: `Bearer ${localStorage.getItem("laptop-token")}` } })
         if (response && response.data.insertedId) {
             toast.success('product added successful')
             setSending(false)

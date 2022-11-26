@@ -6,7 +6,7 @@ const useCheckUser = (email, logout) => {
     const [userCheckLoading, setUserCheckLoading] = useState(true)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/check/${email}?email=${email}`, {
+        fetch(`https://modern-laptop-server.vercel.app/users/check/${email}?email=${email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem("laptop-token")}`
             }

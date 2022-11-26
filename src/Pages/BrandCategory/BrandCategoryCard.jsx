@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { FaLocationArrow } from 'react-icons/fa';
 
-const BrandCategoryCard = ({ singleProduct, setSelectProduct, setClose }) => {
+const BrandCategoryCard = ({ singleProduct, setSelectProduct, setClose, reportProduct }) => {
     const { productName, originalPrice, resellPrice, useTime, details, date, condition, phoneNumber, sealerEmail, sealerName, location } = singleProduct.productInfo;
     const [findVerify, setFindVerify] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/saveUser?email=${sealerEmail}`)
+        fetch(`https://modern-laptop-server.vercel.app/saveUser?email=${sealerEmail}`)
             .then(res => res.json())
             .then(data => {
                 setFindVerify(data[0])
@@ -41,8 +41,9 @@ const BrandCategoryCard = ({ singleProduct, setSelectProduct, setClose }) => {
                     <h4 className='text-gray-500'>Post : {date}</h4>
                     <h4 className='font-semibold'>Phone : {phoneNumber}</h4>
                 </div>
-                <div className="card-actions justify-center mt-3" onClick={() => setClose(true)}>
-                    <label htmlFor="booking-modal" className="btn btn-primary w-full" onClick={() => setSelectProduct(singleProduct)} >Buy Now</label>
+                <div className="card-actions flex justify-between items-center mt-3" onClick={() => setClose(true)}>
+                    <p className="text-lg cursor-pointer font-semibold hover:text-blue-500" onClick={() => reportProduct(singleProduct?._id)} >Report to Admin</p>
+                    <label htmlFor="booking-modal" className="btn btn-primary w-1/2" onClick={() => setSelectProduct(singleProduct)} >Buy Now</label>
                 </div>
             </div>
         </div >
