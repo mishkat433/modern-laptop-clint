@@ -2,15 +2,15 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React from 'react';
 import toast from 'react-hot-toast';
-import AllUserTable from './AllUserTable';
+import AllUserTable from '../AllUsers/AllUserTable';
 
-const AllUsers = () => {
+const AllSellers = () => {
 
     const { data: allUser = [], refetch } = useQuery({
         queryKey: ['allUsers'],
         queryFn: async () => {
             const data = await axios.get('http://localhost:5000/saveUser?sealer=sealer')
-            const filterUser = data.data.filter(allUsers => allUsers.userType === 'user')
+            const filterUser = data.data.filter(allUsers => allUsers.userType === 'sealer')
             return filterUser
         }
     })
@@ -89,4 +89,4 @@ const AllUsers = () => {
     );
 };
 
-export default AllUsers;
+export default AllSellers;

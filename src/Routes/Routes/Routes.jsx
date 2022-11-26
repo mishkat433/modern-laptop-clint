@@ -18,6 +18,7 @@ import AdminRoute from "../AdminRoute/AdminRoute";
 import SeallerRoute from "../SeallerRoute/SeallerRoute";
 import AdminLayout from "../../Pages/Layout/AdminLayout";
 import SeallerLayout from "../../Pages/Layout/SeallerLayout";
+import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
 
 
 const routes = createBrowserRouter([
@@ -117,8 +118,12 @@ const routes = createBrowserRouter([
                 element: <PrivateRoute><Payment /></PrivateRoute>
             },
             {
-                path: '/dashboard/allUsers',
+                path: '/dashboard/allBuyers',
                 element: <AdminRoute><AllUsers /></AdminRoute>
+            },
+            {
+                path: '/dashboard/allSellers',
+                element: <AdminRoute><AllSellers /></AdminRoute>
             }
         ]
     }

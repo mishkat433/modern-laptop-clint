@@ -22,7 +22,6 @@ const AdvartiseItems = () => {
     if (advertiseItem.length === 0) {
         return undefined;
     }
-    console.log(advertiseItem);
 
     return (
         <div className='mb-20'>
