@@ -16,7 +16,8 @@ const SocilaLogin = () => {
     const googleSiginHandle = () => {
         googleSiginIn()
             .then(result => {
-                // const user = result.user;
+                const user = result.user;
+                const userType = 'user';
                 // const currentUser = {
                 //     email: user.email,
                 //     name: user.displayName
@@ -33,9 +34,43 @@ const SocilaLogin = () => {
                 //         toast("Login successful")
                 //         navigate(from, { replace: true })
                 //     })
+                checkAlreadyLogin(user?.name, user?.email, user?.photoURL, userType)
                 setError("")
             })
             .catch(err => setError(err.message))
+    }
+
+    const checkAlreadyLogin = (name, email, photo, userType) => {
+        fetch(`http://localhost:5000/saveUser?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.length === 0) {
+                    saveLoginUser(name, email, photo, userType)
+                }
+                else {
+                    toast.success('user login successful')
+                }
+            })
+    }
+
+    const saveLoginUser = (name, email, photo, userType) => {
+        const user = { name, email, photo, userType, verify: "notVerified" }
+        fetch('http://localhost:5000/saveUser', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    // getUserToken(email)
+                    toast.success('user login successful')
+                    // setLoading(false)
+                    navigate(from, { replace: true })
+                }
+            })
     }
 
     const githubLoginhandle = () => {

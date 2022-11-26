@@ -21,14 +21,34 @@ const MyProducts = () => {
         return <Spinner />
     }
 
+    if (myProduct.length === 0) {
+        return <h4 className='text-4xl font-bold text-center text-red-500 mt-10'>You have no added any product</h4>
+    }
+
     const deleteHandle = (id) => {
         const confirm = window.confirm("do you want to delete this product?")
         if (confirm) {
             axios.delete(`https://modern-laptop-server.vercel.app/deleteProduct/${id}`)
                 .then(response => {
-                    if (response.data.deletedCount > 0) {
+                    if (response.data.addAdvertise > 0) {
                         refetch()
                         toast.success(('Delete successful'))
+                    }
+                })
+                .catch(error => {
+                    toast.error('There was an error!', error.message);
+                });
+        }
+    }
+
+    const advartiseHandle = (id) => {
+        const confirm = window.confirm("do you want to Advertise this product?")
+        if (confirm) {
+            axios.put(`http://localhost:5000/productAdvertise/${id}`)
+                .then(response => {
+                    if (response.data.deletedCount > 0) {
+                        refetch()
+                        toast.success(('Your product is ready for advertises'))
                     }
                 })
                 .catch(error => {
@@ -47,13 +67,14 @@ const MyProducts = () => {
                             <th>SL.No</th>
                             <th>Details</th>
                             <th>Product Name</th>
-                            <th>Status</th>
+                            <th>Sale Status</th>
+                            <th>Advertise</th>
                             <th>action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            myProduct.map((product, index) => <MyProductsTable product={product} key={product?._id} index={index} deleteHandle={deleteHandle} />)
+                            myProduct.map((product, index) => <MyProductsTable product={product} key={product?._id} index={index} deleteHandle={deleteHandle} advartiseHandle={advartiseHandle} />)
                         }
                     </tbody>
                 </table>

@@ -16,6 +16,8 @@ import Payment from "../../Pages/Dashboard/Payment/Payment";
 import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import SeallerRoute from "../SeallerRoute/SeallerRoute";
+import AdminLayout from "../../Pages/Layout/AdminLayout";
+import SeallerLayout from "../../Pages/Layout/SeallerLayout";
 
 
 const routes = createBrowserRouter([
@@ -60,12 +62,23 @@ const routes = createBrowserRouter([
                 element: <PrivateRoute><Dashboard /></PrivateRoute>
             },
             {
-                path: '/dashboard/addProduct',
-                element: <SeallerRoute><AddProduct /></SeallerRoute>
+                path: '/dashboard/myOrders',
+                element: <PrivateRoute><MyOrders /></PrivateRoute>
+            },
+        ]
+    },
+    {
+        path: '/dashboard',
+        element: <SeallerRoute><SeallerLayout /></SeallerRoute>,
+        errorElement: <NotFound />,
+        children: [
+            {
+                path: '/dashboard',
+                element: <SeallerRoute><Dashboard /></SeallerRoute>
             },
             {
                 path: '/dashboard/addProduct',
-                element: <AdminRoute><AddProduct /></AdminRoute>
+                element: <SeallerRoute><AddProduct /></SeallerRoute>
             },
             {
                 path: '/dashboard/myOrders',
@@ -73,11 +86,31 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/dashboard/myProduct',
-                element: <AdminRoute><MyProducts /></AdminRoute>
+                element: <SeallerRoute><MyProducts /></SeallerRoute>
+            },
+
+        ]
+    },
+    {
+        path: '/dashboard',
+        element: <PrivateRoute><AdminLayout /></PrivateRoute>,
+        errorElement: <NotFound />,
+        children: [
+            {
+                path: '/dashboard',
+                element: <PrivateRoute><Dashboard /></PrivateRoute>
+            },
+            {
+                path: '/dashboard/addProduct',
+                element: <AdminRoute><AddProduct /></AdminRoute>
+            },
+            {
+                path: '/dashboard/myOrders',
+                element: <AdminRoute><MyOrders /></AdminRoute>
             },
             {
                 path: '/dashboard/myProduct',
-                element: <SeallerRoute><MyProducts /></SeallerRoute>
+                element: <AdminRoute><MyProducts /></AdminRoute>
             },
             {
                 path: '/dashboard/payment/:id',

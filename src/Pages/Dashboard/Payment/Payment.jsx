@@ -22,7 +22,7 @@ const Payment = () => {
     if (bookingPayment === null) {
         return <Spinner />
     }
-    console.log(bookingPayment);
+
     return (
         <div className='w-11/12 mx-auto'>
             <h1 className='text-center text-4xl font-bold mb-3 uppercase'>Payment</h1>
