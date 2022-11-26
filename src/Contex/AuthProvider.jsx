@@ -30,13 +30,12 @@ const AuthProvider = ({ children }) => {
     }
 
     const UserLogin = (name, password) => {
-        console.log(name, password);
         return signInWithEmailAndPassword(auth, name, password)
     }
 
     const logout = () => {
         toast.success("Logout successful")
-        localStorage.removeItem('photo-token');
+        localStorage.removeItem("laptop-token");
         signOut(auth).then(result => { }).catch(err => console.log(err.message))
     }
 

@@ -32,10 +32,23 @@ const Register = () => {
             .then(photo => {
                 createUser(data?.email, data?.password)
                     .then(result => {
-                        // const user = result.user;
+                        const user = result.user;
+                        const currentUser = {
+                            email: user.email
+                        }
                         profileUpdate(data?.name, photo?.data?.display_url)
                             .then(() => {
-                                saveLoginUser(data?.name, data?.email, photo?.data?.display_url, data?.userType)
+                                fetch('http://localhost:5000/jwt', {
+                                    method: "POST",
+                                    headers: {
+                                        'content-type': 'application/json'
+                                    },
+                                    body: JSON.stringify(currentUser)
+                                }).then(res => res.json())
+                                    .then(data => {
+                                        localStorage.setItem("laptop-token", data.token)
+                                        saveLoginUser(data?.name, data?.email, photo?.data?.display_url, data?.userType)
+                                    })
                             }).catch((error) => {
                                 console.log(error.message)
                             });
@@ -61,7 +74,6 @@ const Register = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    // getUserToken(email)
                     toast.success('user created successful')
                     setLoading(false)
                     navigate(from, { replace: true })

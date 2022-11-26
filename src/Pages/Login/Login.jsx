@@ -9,25 +9,37 @@ import SmallSpinner from '../../Componemts/SmallSpinner';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { UserLogin, loading, setLoading } = useContext(AuthContex);
+    const { UserLogin } = useContext(AuthContex);
     const [loginError, setLoginError] = useState('')
     const [show, setShow] = useState(false)
-
+    const [loading, setLoading] = useState(false)
     const location = useLocation();
     const navigate = useNavigate()
-
     const from = location.state?.from?.pathname || "/";
 
     const handleLogin = (data) => {
         setLoading(true)
         UserLogin(data?.email, data?.password)
             .then(result => {
-                // const user = result.user;
+                const user = result.user;
+                const currentUser = {
+                    email: user.email
+                }
                 setLoginError('')
                 setLoading(false)
-                toast.success('login successful')
-                navigate(from, { replace: true })
-                // getUserToken(data?.email)
+                fetch('http://localhost:5000/jwt', {
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                }).then(res => res.json())
+                    .then(data => {
+                        toast.success('login successful')
+                        navigate(from, { replace: true })
+                        localStorage.setItem("laptop-token", data.accessToken)
+
+                    })
             })
             .catch(err => {
                 setLoginError(err.message)
@@ -36,7 +48,7 @@ const Login = () => {
             })
     }
 
-    // const passwordResetHandle = () => {
+    // const passwordResetHandle = () => 
     // if (formData?.email) {
     //     setError('')
     //     forgetPassword(formData?.email)

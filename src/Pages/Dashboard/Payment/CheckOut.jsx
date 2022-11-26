@@ -1,10 +1,12 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import SmallSpinner from '../../../Componemts/SmallSpinner';
+import { AuthContex } from '../../../Contex/AuthProvider';
 
 const CheckOut = ({ bookingPayment }) => {
+    const { loginUser } = useContext(AuthContex)
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
@@ -80,10 +82,11 @@ const CheckOut = ({ bookingPayment }) => {
                 productId: productId
             }
 
-            fetch('http://localhost:5000/finalPayment', {
+            fetch(`http://localhost:5000/finalPayment?email=${loginUser?.email}`, {
                 method: 'POST',
                 headers: {
-                    'content-type': 'application/json'
+                    'content-type': 'application/json',
+                    authorization: `Bearer ${localStorage.getItem("laptop-token")}`
                 },
                 body: JSON.stringify(payment)
             })

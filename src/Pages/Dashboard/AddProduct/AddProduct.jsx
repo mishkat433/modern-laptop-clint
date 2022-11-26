@@ -5,6 +5,7 @@ import { format } from 'date-fns';
 import { AuthContex } from '../../../Contex/AuthProvider';
 import SmallSpinner from '../../../Componemts/SmallSpinner';
 import { useNavigate } from 'react-router-dom';
+import el from 'date-fns/esm/locale/el/index.js';
 
 const AddProduct = () => {
     const { loginUser } = useContext(AuthContex)
@@ -48,12 +49,15 @@ const AddProduct = () => {
 
     const addProductInDB = async (productInfo) => {
         const response = await axios
-            .post('https://modern-laptop-server.vercel.app/addProduct', productInfo)
-            .catch((error) => console.log('Error: ', error));
+            .post(`http://localhost:5000/addProduct?email=${loginUser?.email}`, productInfo, { headers: { authorization: `Bearer ${localStorage.getItem("laptop-token")}` } })
         if (response && response.data.insertedId) {
             toast.success('product added successful')
             setSending(false)
             navigate('/dashboard/myProduct')
+        }
+        else {
+            setSending(false)
+            toast.error('Something went wrong')
         }
     }
 

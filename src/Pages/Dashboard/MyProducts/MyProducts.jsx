@@ -12,7 +12,9 @@ const MyProducts = () => {
     const { data: myProduct = [], isLoading, refetch } = useQuery({
         queryKey: ['myProduct'],
         queryFn: async () => {
-            const data = await axios.get(`https://modern-laptop-server.vercel.app/myProduct/${loginUser?.email}`)
+            const data = await axios.get(`https://modern-laptop-server.vercel.app/myProduct/${loginUser?.email}?email=${loginUser?.email}`, {
+                headers: { authorization: `Bearer ${localStorage.getItem("laptop-token")}` }
+            })
             return data.data;
         }
     })
@@ -30,7 +32,7 @@ const MyProducts = () => {
         if (confirm) {
             axios.delete(`https://modern-laptop-server.vercel.app/deleteProduct/${id}`)
                 .then(response => {
-                    if (response.data.addAdvertise > 0) {
+                    if (response.data.deletedCount > 0) {
                         toast.success(('Delete successful'))
                         refetch()
                     }
@@ -43,10 +45,12 @@ const MyProducts = () => {
 
     const advartiseHandle = (id) => {
         const confirm = window.confirm("do you want to Advertise this product?")
+        const headers = { authorization: `Bearer ${localStorage.getItem("laptop-token")}` }
         if (confirm) {
-            axios.put(`http://localhost:5000/productAdvertise/${id}`)
+            axios.put(`http://localhost:5000/productAdvertise/${id}?email=${loginUser?.email}`, id, { headers })
                 .then(response => {
-                    if (response.data.deletedCount > 0) {
+                    if (response.data.modifiedCount > 0) {
+
                         refetch()
                         toast.success(('Your product is ready for advertises'))
                     }

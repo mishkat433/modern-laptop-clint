@@ -4,15 +4,15 @@
 https://modern-laptop.web.app/
 
 ### Features ###
-* You can see second hand laptop category
+* You can see second hand laptop category.
 * You can buy Second Hand laptop as category.
 * You Can see verify sealer product.
-* You can book any laptop, and after payment you will get your product;
+* You can book any laptop, and after payment you will get your product.
 * All type of user can see myOrder.
 * Only sealer and admin can see myProduct (added any product)
 * Only sealer and admin added any product by category.
-* Only admin can see all Sealer and Buyers
-* Create/login Account
+* Only admin can see all Sealer and Buyers.
+* Create/login/Logout Account.
 * Some Question Answer.
 * etc. 
 
@@ -31,3 +31,6 @@ https://modern-laptop.web.app/
 * mongoDB
 
 ### Thank You ###
+
+Admin Email : admin@gmail.com
+Admin Password : Admin1122@

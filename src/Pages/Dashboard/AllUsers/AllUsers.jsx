@@ -11,7 +11,7 @@ const AllUsers = () => {
         queryFn: async () => {
             const data = await axios.get('http://localhost:5000/saveUser?sealer=sealer')
             const filterUser = data.data.filter(allUsers => allUsers.userType === 'user')
-            return filterUser
+            return filterUser;
         }
     })
 
@@ -71,6 +71,7 @@ const AllUsers = () => {
                     <thead>
                         <tr className='bg-blue-400 text-center'>
                             <th>SL.No</th>
+                            <th>Name</th>
                             <th>Email</th>
                             <th>User Type</th>
                             <th>Make Admin</th>

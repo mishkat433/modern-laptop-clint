@@ -15,7 +15,11 @@ const MyOrders = () => {
 
     useEffect(() => {
         if (checkUser) {
-            fetch(`http://localhost:5000/myBooking/${loginUser?.email}`)
+            fetch(`http://localhost:5000/myBooking/${loginUser?.email}?email=${loginUser?.email}`, {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem("laptop-token")}`
+                }
+            })
                 .then(res => res.json())
                 .then(data => {
                     setMyOrder(data)

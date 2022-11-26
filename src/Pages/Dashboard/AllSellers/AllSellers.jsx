@@ -71,6 +71,7 @@ const AllSellers = () => {
                     <thead>
                         <tr className='bg-blue-400 text-center'>
                             <th>SL.No</th>
+                            <th>Name</th>
                             <th>Email</th>
                             <th>User Type</th>
                             <th>Make Admin</th>
