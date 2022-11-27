@@ -11,7 +11,7 @@ const Supports = () => {
                 <h1 className='text-3xl lg:text-4xl font-bold mb-5 text-orange-500'>Support Brands</h1>
                 <p className='text-md lg:text-lg'>When you're ready to build more advanced capabilities and distribute your apps, you can join</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 " data-aos="flip-up">
                 <img className='border-2 p-2 rounded-md h-[140px] w-full' src={brand1} alt="brand" />
                 <img className='border-2 p-2 rounded-md h-[140px] w-full' src={brand2} alt="brand" />
                 <img className='border-2 p-2 rounded-md h-[140px] w-full' src={brand3} alt="brand" />

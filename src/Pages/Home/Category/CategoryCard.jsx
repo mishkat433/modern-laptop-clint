@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 const CategoryCard = ({ category }) => {
     const { categoryId, heading, image } = category;
     return (
-        <Link to={`/category/${categoryId}`}>
-            <div className="card card-compact bg-base-100 shadow-xl border hover:bg-blue-400 duration-300 hover:text-white ">
+        <Link to={`/category/${categoryId}`} >
+            <div className="card card-compact bg-base-100 shadow-xl border hover:bg-blue-400 duration-300 hover:text-white " data-aos="zoom-in">
                 <figure><img className='h-[200px] w-4/5 hover:scale-110 duration-300' src={image} alt="Shoes" /></figure>
                 <hr />
                 <div className="p-3 text-center">
