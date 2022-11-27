@@ -12,7 +12,7 @@ const Register = () => {
     const { createUser, profileUpdate, loading, setLoading } = useContext(AuthContex)
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [show, setShow] = useState(false)
-
+    const [spin, setSpin] = useState(false)
     const location = useLocation();
     const navigate = useNavigate()
 
@@ -23,6 +23,7 @@ const Register = () => {
         const formData = new FormData();
         formData.append('image', image)
         setLoading(true)
+        setSpin(true)
 
         fetch(`https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_uploadKey}`, {
             method: "POST",
@@ -32,7 +33,7 @@ const Register = () => {
             .then(photo => {
                 createUser(data?.email, data?.password)
                     .then(result => {
-                        const userType = 'user';
+                        const userType = data.userType;
                         const user = result.user;
                         const currentUser = {
                             email: user.email
@@ -78,6 +79,7 @@ const Register = () => {
                 if (data.acknowledged) {
                     toast.success('user created successful')
                     setLoading(false)
+                    setSpin(false)
                     navigate(from, { replace: true })
                 }
             })
@@ -94,7 +96,7 @@ const Register = () => {
                     <form className='w-full mb-3' onSubmit={handleSubmit(signUpHandle)}>
                         <div className="form-control w-full mt-3">
                             <label className="label">Account Type </label>
-                            <select name="" id="" className="input input-bordered w-full "{...register("userType")} >
+                            <select name="userType" id="" className="input input-bordered w-full "{...register("userType")} >
                                 <option value='user'>User</option>
                                 <option value='sealer'>Sealer</option>
                             </select>
@@ -104,10 +106,6 @@ const Register = () => {
                             <input type='text' {...register("name", { required: 'name is required' })} className="input input-bordered w-full " />
                             {errors.name && <p className='text-red-500'>{errors?.name.message}</p>}
                         </div>
-                        {/* <div className="form-control w-full">
-                        <label className="label">Photo URL </label>
-                        <input type='text' {...register("photo")} className="input input-bordered w-full " />
-                    </div> */}
                         <div className="form-control w-full">
                             <label className="label">Photo </label>
                             <input type='file' {...register("image")} className=" file-input file-input-bordered file-input-primary w-full " />
@@ -131,7 +129,7 @@ const Register = () => {
                             </div>
                         </div>
                         {
-                            loading ? <button className='btn btn-info w-full mt-3' disabled><SmallSpinner /> </button> :
+                            spin ? <button className='btn btn-info w-full mt-3' disabled><SmallSpinner /> </button> :
                                 <input type="submit" className='btn bg-primary hover:bg-blue-700 border-none w-full mt-3 text-white' value='Login' />
                         }
 
