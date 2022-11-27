@@ -10,7 +10,7 @@ const AdvartiseItems = () => {
     const { data: advertiseItem = [], isLoading } = useQuery({
         queryKey: ['advetiseItem'],
         queryFn: async () => {
-            const response = await axios.get('https://modern-laptop-server.vercel.app/advetiseItems')
+            const response = await axios.get('http://localhost:5000/advetiseItems')
             return response.data
         }
     })

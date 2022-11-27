@@ -3,8 +3,10 @@ import { Navigate, useLocation } from 'react-router-dom';
 import Spinner from '../../Componemts/Spinner';
 import { AuthContex } from '../../Contex/AuthProvider';
 
+
 const PrivateRoute = ({ children }) => {
-    const { loginUser, loading } = useContext(AuthContex);
+    const { loginUser, loading, } = useContext(AuthContex);
+
     const location = useLocation()
     if (loading) {
         return <Spinner />

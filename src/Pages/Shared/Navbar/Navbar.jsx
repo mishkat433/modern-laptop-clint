@@ -4,16 +4,22 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from "../../../assets/logo.png";
 import { AuthContex } from '../../../Contex/AuthProvider';
 import notFound from "../../../assets/notFoundImage.png";
+import useCheckUser from '../../../hooks/useCheckUser';
 
 const Navbar = () => {
     const { loginUser, logout } = useContext(AuthContex)
+    const [checkUser, userCheckLoading] = useCheckUser(loginUser?.email)
 
     const menuItems = <>
         <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold" : undefined} to="/home">Home</NavLink></li>
         <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold" : undefined} to="/blog">Blog</NavLink></li>
         {
             loginUser?.uid && <div className='flex flex-col lg:flex-row lg:items-center'>
-                <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold" : undefined} to="/dashboard">Dashboard</NavLink></li>
+                {
+                    checkUser === 'admin' ? <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold" : undefined} to="/adminPanel">Dashboard</NavLink></li>
+                        : <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold" : undefined} to="/dashboard">Dashboard</NavLink></li>
+                }
+                {/* <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold" : undefined} to="/dashboard">Dashboard</NavLink></li> */}
                 <li> <button onClick={() => logout()} className=" btn btn-md bg-orange-400 ml-3 border-none text-white hover:bg-orange-500">Logout </button></li>
             </div>
         }

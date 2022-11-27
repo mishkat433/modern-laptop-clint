@@ -5,14 +5,14 @@ import { AuthContex } from '../../Contex/AuthProvider';
 import useCheckUser from '../../hooks/useCheckUser';
 
 const AdminRoute = ({ children }) => {
-    const { loginUser, loading } = useContext(AuthContex);
-    const [checkUser, userCheckLoading] = useCheckUser(loginUser?.email)
+    const { loginUser, loading, logout } = useContext(AuthContex);
+    const [checkUser, userCheckLoading] = useCheckUser(loginUser?.email, logout)
 
     const location = useLocation()
     if (loading || userCheckLoading) {
         return <Spinner />
     }
-    if (loginUser?.uid && checkUser === 'admin') {
+    if (loginUser?.uid && checkUser === "admin") {
         return children
     }
     return <Navigate to='/login' state={{ from: location }} replace />

@@ -15,10 +15,9 @@ import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import Payment from "../../Pages/Dashboard/Payment/Payment";
 import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
 import AdminRoute from "../AdminRoute/AdminRoute";
-import SeallerRoute from "../SeallerRoute/SeallerRoute";
-import AdminLayout from "../../Pages/Layout/AdminLayout";
-import SeallerLayout from "../../Pages/Layout/SeallerLayout";
 import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
+import ReportProducts from "../../Pages/Dashboard/ReportProducts/ReportProducts";
+import SeallerRoute from "../SeallerRoute/SeallerRoute";
 
 
 const routes = createBrowserRouter([
@@ -55,31 +54,20 @@ const routes = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
         errorElement: <NotFound />,
+        element: <DashboardLayout />,
         children: [
             {
                 path: '/dashboard',
                 element: <PrivateRoute><Dashboard /></PrivateRoute>
             },
             {
-                path: '/dashboard/myOrders',
-                element: <PrivateRoute><MyOrders /></PrivateRoute>
-            },
-        ]
-    },
-    {
-        path: '/dashboard',
-        element: <SeallerRoute><SeallerLayout /></SeallerRoute>,
-        errorElement: <NotFound />,
-        children: [
-            {
-                path: '/dashboard',
-                element: <SeallerRoute><Dashboard /></SeallerRoute>
-            },
-            {
                 path: '/dashboard/addProduct',
                 element: <SeallerRoute><AddProduct /></SeallerRoute>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <PrivateRoute><Payment /></PrivateRoute>
             },
             {
                 path: '/dashboard/myOrders',
@@ -93,40 +81,51 @@ const routes = createBrowserRouter([
         ]
     },
     {
-        path: '/dashboard',
-        element: <AdminRoute><AdminLayout /></AdminRoute>,
+        path: '/adminPanel',
         errorElement: <NotFound />,
+        element: <DashboardLayout />,
         children: [
             {
-                path: '/dashboard',
-                element: <AdminRoute><Dashboard /></AdminRoute>
+                path: '/adminPanel',
+                element: <PrivateRoute><Dashboard /></PrivateRoute>
             },
             {
-                path: '/dashboard/addProduct',
+                path: '/adminPanel',
+                element: <PrivateRoute><Dashboard /></PrivateRoute>
+            },
+            {
+                path: '/adminPanel/addProduct',
                 element: <AdminRoute><AddProduct /></AdminRoute>
             },
             {
-                path: '/dashboard/myOrders',
-                element: <AdminRoute><MyOrders /></AdminRoute>
-            },
-            {
-                path: '/dashboard/myProduct',
-                element: <AdminRoute><MyProducts /></AdminRoute>
-            },
-            {
-                path: '/dashboard/payment/:id',
+                path: '/adminPanel/payment/:id',
                 element: <PrivateRoute><Payment /></PrivateRoute>
             },
             {
-                path: '/dashboard/allBuyers',
+                path: '/adminPanel/myOrders',
+                element: <PrivateRoute><MyOrders /></PrivateRoute>
+            },
+            {
+                path: '/adminPanel/myProduct',
+                element: <AdminRoute><MyProducts /></AdminRoute>
+            },
+            {
+                path: '/adminPanel/allBuyers',
                 element: <AdminRoute><AllUsers /></AdminRoute>
             },
             {
-                path: '/dashboard/allSellers',
+                path: '/adminPanel/allSellers',
                 element: <AdminRoute><AllSellers /></AdminRoute>
-            }
+            },
+
+            {
+                path: '/adminPanel/reportProducts',
+                element: <AdminRoute><ReportProducts /></AdminRoute>
+            },
+
         ]
     }
+
 ])
 
 export default routes;

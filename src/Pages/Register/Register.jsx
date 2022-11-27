@@ -39,7 +39,7 @@ const Register = () => {
                         }
                         profileUpdate(data?.name, photo?.data?.display_url)
                             .then(() => {
-                                fetch('https://modern-laptop-server.vercel.app/jwt', {
+                                fetch('http://localhost:5000/jwt', {
                                     method: "POST",
                                     headers: {
                                         'content-type': 'application/json'
@@ -66,7 +66,7 @@ const Register = () => {
     const saveLoginUser = (name, email, photo, userType) => {
         // console.log(name, email, photo, userType);
         const user = { name, email, photo, userType, verify: "notVerified" }
-        fetch('https://modern-laptop-server.vercel.app/saveUser', {
+        fetch('http://localhost:5000/saveUser', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

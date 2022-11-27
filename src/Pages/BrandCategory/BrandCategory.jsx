@@ -17,7 +17,7 @@ const BrandCategory = () => {
     const { data: brandWiseLoad = [], isLoading } = useQuery({
         queryKey: ['product'],
         queryFn: async () => {
-            const data = await axios.get(`https://modern-laptop-server.vercel.app/product/${id}`)
+            const data = await axios.get(`http://localhost:5000/product/${id}`)
             return data.data;
         }
     })

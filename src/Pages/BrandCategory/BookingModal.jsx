@@ -32,7 +32,7 @@ const BookingModal = ({ selectProduct, setClose }) => {
 
     const sendbookingdata = async (bookingProductData, e) => {
         const response = await axios
-            .post('https://modern-laptop-server.vercel.app/booking', bookingProductData)
+            .post('http://localhost:5000/booking', bookingProductData)
             .catch((error) => {
                 setLoading(false)
                 toast.error('Error: ', error.message)

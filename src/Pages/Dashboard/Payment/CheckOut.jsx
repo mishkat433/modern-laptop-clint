@@ -20,7 +20,7 @@ const CheckOut = ({ bookingPayment }) => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch('https://modern-laptop-server.vercel.app/create-payment', {
+        fetch('http://localhost:5000/create-payment', {
             method: "POST",
             headers: { "content-type": "application/json", authorization: `bearer ${localStorage.getItem('accessToken')}` },
             body: JSON.stringify({ choseProductPrice })
@@ -82,7 +82,7 @@ const CheckOut = ({ bookingPayment }) => {
                 productId: productId
             }
 
-            fetch(`https://modern-laptop-server.vercel.app/finalPayment?email=${loginUser?.email}`, {
+            fetch(`http://localhost:5000/finalPayment?email=${loginUser?.email}`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
