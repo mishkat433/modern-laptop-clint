@@ -9,7 +9,7 @@ const ReportProducts = () => {
     const { data: reportItems = [], refetch } = useQuery({
         queryKey: ['reportedProducts'],
         queryFn: async () => {
-            const data = await axios.get('http://localhost:5000/reportedProducts')
+            const data = await axios.get('https://modern-laptop-server.vercel.app/reportedProducts')
             return data.data;
         }
     })
@@ -17,7 +17,7 @@ const ReportProducts = () => {
     const deleteHandle = (id) => {
         const confirm = window.confirm("do you want to delete this product?")
         if (confirm) {
-            axios.delete(`http://localhost:5000/deleteProduct/${id}`)
+            axios.delete(`https://modern-laptop-server.vercel.app/deleteProduct/${id}`)
                 .then(response => {
                     if (response.data.deletedCount > 0) {
                         toast.success(('Delete successful'))

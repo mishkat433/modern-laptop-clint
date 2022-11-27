@@ -17,11 +17,10 @@ const BrandCategory = () => {
     const { data: brandWiseLoad = [], isLoading } = useQuery({
         queryKey: ['product'],
         queryFn: async () => {
-            const data = await axios.get(`http://localhost:5000/product/${id}`)
+            const data = await axios.get(`https://modern-laptop-server.vercel.app/product/${id}`)
             return data.data;
         }
     })
-
 
     if (isLoading) {
         return <Spinner />
@@ -33,7 +32,7 @@ const BrandCategory = () => {
     const reportProduct = (id) => {
         const confirm = window.confirm("do you want to report this product?")
         if (confirm) {
-            axios.put(`http://localhost:5000/reportProduct/${id}`)
+            axios.put(`https://modern-laptop-server.vercel.app/reportProduct/${id}`)
                 .then(data => {
                     if (data.data.modifiedCount > 0) {
                         toast.success('report this product successful')

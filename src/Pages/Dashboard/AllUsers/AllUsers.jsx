@@ -9,7 +9,7 @@ const AllUsers = () => {
     const { data: allUser = [], refetch } = useQuery({
         queryKey: ['allUsers'],
         queryFn: async () => {
-            const data = await axios.get('http://localhost:5000/saveUser?sealer=sealer')
+            const data = await axios.get('https://modern-laptop-server.vercel.app/saveUser?sealer=sealer')
             const filterUser = data.data.filter(allUsers => allUsers.userType === 'user')
             return filterUser;
         }
@@ -18,7 +18,7 @@ const AllUsers = () => {
     const verifyHandle = (id) => {
         const confirm = window.confirm("Do you want to verify this user?")
         if (confirm) {
-            fetch(`http://localhost:5000/verifyUser/${id}`, {
+            fetch(`https://modern-laptop-server.vercel.app/verifyUser/${id}`, {
                 method: "PUT"
             })
                 .then(res => res.json())
@@ -34,7 +34,7 @@ const AllUsers = () => {
     const makeAdminHandle = (id) => {
         const confirm = window.confirm("Do you want to make Admin this user?")
         if (confirm) {
-            fetch(`http://localhost:5000/makeAdmin/${id}`, {
+            fetch(`https://modern-laptop-server.vercel.app/makeAdmin/${id}`, {
                 method: "PUT"
             })
                 .then(res => res.json())
@@ -50,7 +50,7 @@ const AllUsers = () => {
     const deleteUserHandle = (id) => {
         const confirm = window.confirm("Do you want to make Admin this user?")
         if (confirm) {
-            fetch(`http://localhost:5000/deleteAdmin/${id}`, {
+            fetch(`https://modern-laptop-server.vercel.app/deleteAdmin/${id}`, {
                 method: "delete"
             })
                 .then(res => res.json())

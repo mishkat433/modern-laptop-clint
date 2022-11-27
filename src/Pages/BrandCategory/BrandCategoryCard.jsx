@@ -6,7 +6,7 @@ const BrandCategoryCard = ({ singleProduct, setSelectProduct, setClose, reportPr
     const [findVerify, setFindVerify] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/saveUser?email=${sealerEmail}`)
+        fetch(`https://modern-laptop-server.vercel.app/saveUser?email=${sealerEmail}`)
             .then(res => res.json())
             .then(data => {
                 setFindVerify(data[0])

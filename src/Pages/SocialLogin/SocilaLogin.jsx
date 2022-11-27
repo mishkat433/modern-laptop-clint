@@ -22,7 +22,7 @@ const SocilaLogin = () => {
                 const currentUser = {
                     email: user.email,
                 }
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://modern-laptop-server.vercel.app/jwt', {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json'
@@ -40,7 +40,7 @@ const SocilaLogin = () => {
     }
 
     const checkAlreadyLogin = (name, email, photo, userType) => {
-        fetch(`http://localhost:5000/saveUser?email=${email}`)
+        fetch(`https://modern-laptop-server.vercel.app/saveUser?email=${email}`)
             .then(res => res.json())
             .then(data => {
                 if (data.length === 0) {
@@ -54,7 +54,7 @@ const SocilaLogin = () => {
 
     const saveLoginUser = (name, email, photo, userType) => {
         const user = { name, email, photo, userType, verify: "notVerified" }
-        fetch('http://localhost:5000/saveUser', {
+        fetch('https://modern-laptop-server.vercel.app/saveUser', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

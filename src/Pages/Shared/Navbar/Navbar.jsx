@@ -8,8 +8,8 @@ import useCheckUser from '../../../hooks/useCheckUser';
 
 const Navbar = () => {
     const { loginUser, logout } = useContext(AuthContex)
-    const [checkUser, userCheckLoading] = useCheckUser(loginUser?.email)
-    console.log(userCheckLoading);
+    const [checkUser] = useCheckUser(loginUser?.email)
+    // console.log(userCheckLoading);
     const menuItems = <>
         <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold" : undefined} to="/home">Home</NavLink></li>
         <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold" : undefined} to="/blog">Blog</NavLink></li>
