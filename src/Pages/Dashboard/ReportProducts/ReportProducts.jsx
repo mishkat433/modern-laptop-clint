@@ -2,17 +2,23 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React from 'react';
 import toast from 'react-hot-toast';
+import Spinner from '../../../Componemts/Spinner';
 import ReportTable from './ReportTable';
 
 const ReportProducts = () => {
 
-    const { data: reportItems = [], refetch } = useQuery({
+    const { data: reportItems = [], isLoading, refetch } = useQuery({
         queryKey: ['reportedProducts'],
         queryFn: async () => {
             const data = await axios.get('https://modern-laptop-server.vercel.app/reportedProducts')
             return data.data;
         }
     })
+
+    if (isLoading) {
+        return <Spinner />
+    }
+
 
     const deleteHandle = (id) => {
         const confirm = window.confirm("do you want to delete this product?")
@@ -28,6 +34,10 @@ const ReportProducts = () => {
                     toast.error('There was an error!', error.message);
                 });
         }
+    }
+
+    if (reportItems.length === 0) {
+        return <p className='text-red-500 font-bold text-4xl mt-10'>Reported Product is Empty</p>
     }
 
     return (

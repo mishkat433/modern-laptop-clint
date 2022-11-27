@@ -25,22 +25,12 @@ const Payment = () => {
     console.log(bookingPayment);
     return (
         <div className='w-11/12 mx-auto'>
-            <h1 className='text-center text-4xl font-bold mb-3 uppercase'>Payment</h1>
+            <h1 className='text-center text-4xl font-bold my-3 uppercase'>Payment</h1>
             <p className="text-xl">Please Pay <strong>${bookingPayment?.choseProductPrice}</strong> for buying <span className='font-bold'>{bookingPayment?.choseProductName}</span></p>
             <div className='mt-10 w-3/5'>
                 <Elements stripe={stripePromise} >
                     <CheckOut bookingPayment={bookingPayment} />
                 </Elements>
-            </div>
-            <div className="card w-96 bg-base-100 shadow-xl mt-10">
-                <figure><img src={bookingPayment?.productImage} alt="Shoes" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">Shoes!</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                    <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
-                    </div>
-                </div>
             </div>
         </div>
     );

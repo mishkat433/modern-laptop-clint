@@ -19,7 +19,6 @@ const Navbar = () => {
                     checkUser === 'admin' ? <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold" : undefined} to="/adminPanel">Dashboard</NavLink></li>
                         : <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold" : undefined} to="/dashboard">Dashboard</NavLink></li>
                 }
-                {/* <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold" : undefined} to="/dashboard">Dashboard</NavLink></li> */}
                 <li> <button onClick={() => logout()} className=" btn btn-md bg-orange-400 ml-3 border-none text-white hover:bg-orange-500">Logout </button></li>
             </div>
         }

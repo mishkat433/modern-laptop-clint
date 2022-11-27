@@ -123,10 +123,10 @@ const CheckOut = ({ bookingPayment }) => {
                         },
                     }}
                 />
-                <button className='btn btn-primary btn-sm mt-3' type="submit" disabled={!stripe || !clientSecret || processing}>
+                <button className='btn btn-primary w-2/5 btn-sm mt-3' type="submit" disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
-                {processing && <SmallSpinner />}
+                {processing && <p className='flex justify-center gap-5'>Card Processing. Please wait few seconds <SmallSpinner /></p>}
             </form>
             {cardError && <p className='text-red-500 my-5'>{cardError}</p>}
             {success && <p className='text-blue-500 mt-5 text-xl'>{success}</p>}
