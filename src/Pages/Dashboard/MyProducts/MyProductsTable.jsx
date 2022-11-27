@@ -21,7 +21,7 @@ const MyProductsTable = ({ product, index, deleteHandle, advartiseHandle }) => {
             <td>{productName}</td>
             <td>{product?.payment ? <p className='text-error'>Sold Out</p> : <p>Available</p>}</td>
             <td>{
-                product?.advertise !== 'advertise' && !product?.payment ? <button onClick={() => advartiseHandle(product?._id)} className='btn btn-sm btn-primary capitalize'>Advertise</button> : undefined
+                product?.advertise !== 'advertise' && !product?.payment ? <button onClick={() => advartiseHandle(product?._id)} className='btn btn-sm btn-primary capitalize'>Advertise</button> : <h4>Already Advertise</h4>
             }</td>
             <td><button><FaTrash className='text-orange-500 text-xl' onClick={() => deleteHandle(product?._id)} /></button></td>
         </tr>

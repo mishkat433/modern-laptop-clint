@@ -30,7 +30,7 @@ https://modern-laptop.web.app/
 * Jwt authorization.
 * mongoDB
 
-### Thank You ###
+#### Admin Email : admin@gmail.com ####
+#### Admin Password : Admin1122@ ####
 
-Admin Email : admin@gmail.com
-Admin Password : Admin1122@
+### Thank You ###
