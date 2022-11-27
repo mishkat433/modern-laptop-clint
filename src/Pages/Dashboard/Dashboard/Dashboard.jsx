@@ -13,8 +13,8 @@ const Dashboard = () => {
     }
     return (
         <div className=' my-10'>
-            <h1 className='text-center text-5xl mb-5'> Welcome to <span className='font-semibold uppercase'>{checkUser}</span> Dashboard</h1>
-            <img className='w-3/5 h-[400px] mx-auto' src={dashboardImage} alt="dashboard" />
+            <h1 className='text-center text-2xl md:text-5xl mb-5'> Welcome to <span className='font-semibold uppercase'>{checkUser}</span> Dashboard</h1>
+            <img className='w-full md:w-3/5 h-[200px] md:h-[400px] mx-auto' src={dashboardImage} alt="dashboard" />
         </div>
     );
 };

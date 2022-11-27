@@ -9,7 +9,7 @@ import useCheckUser from '../../../hooks/useCheckUser';
 const Navbar = () => {
     const { loginUser, logout } = useContext(AuthContex)
     const [checkUser, userCheckLoading] = useCheckUser(loginUser?.email)
-
+    console.log(userCheckLoading);
     const menuItems = <>
         <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold" : undefined} to="/home">Home</NavLink></li>
         <li><NavLink className={({ isActive }) => isActive ? "text-black font-bold" : undefined} to="/blog">Blog</NavLink></li>
@@ -27,7 +27,7 @@ const Navbar = () => {
     return (
         <div className=' bg-base-100  shadow-lg mb-5 sticky top-0 z-20'>
             <div className="navbar w-11/12 mx-auto ">
-                <div className="navbar-start">
+                <div className="navbar-start w-full md:w-3/5">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
@@ -36,8 +36,8 @@ const Navbar = () => {
                             {menuItems}
                         </ul>
                     </div>
-                    <Link to="/" className="flex items-center  text-xl md:text-3xl gap-1 md:gap-3 font-semibold">
-                        <img className='w-16 md:w-18 ' src={logo} alt="" /><h1 className='-mt-2'>Modern <span className='text-orange-400 '>Laptop</span></h1></Link>
+                    <Link to="/" className="flex items-center text-md md:text-3xl gap-1 md:gap-3 font-semibold">
+                        <img className='w-14 md:w-18 ' src={logo} alt="" /><h1 className='-mt-2'>Modern <span className='text-orange-400 '>Laptop</span></h1></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">

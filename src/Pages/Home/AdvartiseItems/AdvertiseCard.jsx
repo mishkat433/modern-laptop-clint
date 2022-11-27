@@ -7,7 +7,7 @@ const AdvertiseCard = ({ adItem }) => {
     const { productName, date, resellPrice } = adItem?.productInfo;
 
     return (
-        <div className="card bg-base-100 shadow-xl">
+        <div className="card bg-base-100 shadow-xl" data-aos="flip-left">
             <figure><img className='h-[250px] w-full' src={adItem?.image} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="text-2xl font-bold text-center">{productName}</h2>

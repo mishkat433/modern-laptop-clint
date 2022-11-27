@@ -15,7 +15,7 @@ const BrandCategoryCard = ({ singleProduct, setSelectProduct, setClose, reportPr
 
 
     return (
-        <div className="card  bg-base-100 shadow-xl">
+        <div className="card  bg-base-100 shadow-xl" data-aos="flip-left">
             <figure><img className='w-full h-[250px] border-b' src={singleProduct?.image} alt="product" /></figure>
             <div className="p-4 card-body ">
                 <h2 className="text-2xl capitalize font-bold text-center">{productName}</h2>
