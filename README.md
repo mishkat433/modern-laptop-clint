@@ -7,12 +7,13 @@ https://modern-laptop.web.app/
 * You can see second hand laptop category.
 * You can buy Second Hand laptop as category.
 * You Can see verify sealer product.
+* All type of user can report any product.
 * You can book any laptop, and after payment you will get your product.
 * All type of user can see myOrder.
 * Only sealer and admin can see myProduct (added any product)
 * Only sealer and admin added any product by category.
-* Only admin can see all Sealer and Buyers.
-* Create/login/Logout Account.
+* Only admin can see all Sealer / Buyers / reported Product.
+*  Account Create/Login/Logout.
 * Some Question Answer.
 * etc. 
 

@@ -9,7 +9,7 @@ import SmallSpinner from '../../Componemts/SmallSpinner';
 
 
 const Register = () => {
-    const { createUser, profileUpdate, loading, setLoading } = useContext(AuthContex)
+    const { createUser, profileUpdate, setLoading } = useContext(AuthContex)
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [show, setShow] = useState(false)
     const [spin, setSpin] = useState(false)
