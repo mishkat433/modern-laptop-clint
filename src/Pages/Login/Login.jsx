@@ -63,7 +63,7 @@ const Login = () => {
                 <div className="text-center lg:text-left hidden lg:block" data-aos="fade-right">
                     <img className='w-4/5 hidden md:block' src={loginImg} alt="" />
                 </div>
-                <div className='card w-2/6 shadow-md p-5 '>
+                <div className='card w-full lg:w-2/6 shadow-md p-5 '>
                     <h2 className='text-2xl text-center font-semibold'>Login</h2>
                     <form onSubmit={handleSubmit(handleLogin)} className='w-full mb-3'>
                         {/* <div className="form-control w-full mt-3">

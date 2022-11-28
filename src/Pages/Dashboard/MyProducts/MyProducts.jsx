@@ -24,7 +24,7 @@ const MyProducts = () => {
     }
 
     if (myProduct.length === 0) {
-        return <h4 className='text-4xl font-bold text-center text-red-500 mt-10'>You have no added any product</h4>
+        return <h4 className='text-2xl md:text-4xl font-bold text-center text-red-500 my-10'>You have no added any product</h4>
     }
 
     const deleteHandle = (id) => {

@@ -48,14 +48,14 @@ const AllSellers = () => {
     }
 
     const deleteUserHandle = (id) => {
-        const confirm = window.confirm("Do you want to make Admin this user?")
+        const confirm = window.confirm("Do you want to delete this user?")
         if (confirm) {
-            fetch(`https://modern-laptop-server.vercel.app/deleteAdmin/${id}`, {
-                method: "delete"
+            fetch(`https://modern-laptop-server.vercel.app/deleteUser/${id}`, {
+                method: "DELETE"
             })
                 .then(res => res.json())
                 .then(data => {
-                    if (data.modifiedCount > 0) {
+                    if (data.deletedCount > 0) {
                         toast.success('user delete Successful')
                         refetch()
                     }

@@ -31,7 +31,7 @@ const MyOrders = () => {
     }
 
     if (myOrder.length === 0) {
-        return <h4 className='text-4xl font-bold text-center text-red-500 mt-10'>NO Orders found</h4>
+        return <h4 className='text-2xl md:text-4xl font-bold text-center text-red-500 py-10'>NO Orders found</h4>
     }
 
 

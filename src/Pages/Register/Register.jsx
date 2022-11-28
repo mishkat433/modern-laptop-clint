@@ -91,7 +91,7 @@ const Register = () => {
                 <div className="text-center lg:text-left hidden lg:block ">
                     <img src={loginImg} alt="" />
                 </div>
-                <div className='card w-2/6 shadow-md p-5 '>
+                <div className='card w-full lg:w-2/6 shadow-md p-5 '>
                     <h2 className='text-2xl text-center font-semibold'> Sign Up</h2>
                     <form className='w-full mb-3' onSubmit={handleSubmit(signUpHandle)}>
                         <div className="form-control w-full mt-3">

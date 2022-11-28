@@ -17,7 +17,7 @@ const useCheckUser = (email, logout) => {
             })
                 .then(res => {
                     if (res.status === 403 || res.status === 401) {
-                        toast.error("Not Access")
+                        // toast.error("Not Access")
                         navigate('/')
                         return logout()
                     }

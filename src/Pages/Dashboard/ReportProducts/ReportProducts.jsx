@@ -37,7 +37,7 @@ const ReportProducts = () => {
     }
 
     if (reportItems.length === 0) {
-        return <p className='text-red-500 font-bold text-4xl mt-10'>Reported Product is Empty</p>
+        return <p className='text-red-500 font-bold text-2xl md:text-4xl my-10'>Reported Product is Empty</p>
     }
 
     return (
