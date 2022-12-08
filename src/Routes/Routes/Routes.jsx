@@ -77,7 +77,6 @@ const routes = createBrowserRouter([
                 path: '/dashboard/myProduct',
                 element: <SeallerRoute><MyProducts /></SeallerRoute>
             },
-
         ]
     },
     {
@@ -117,15 +116,12 @@ const routes = createBrowserRouter([
                 path: '/adminPanel/allSellers',
                 element: <AdminRoute><AllSellers /></AdminRoute>
             },
-
             {
                 path: '/adminPanel/reportProducts',
                 element: <AdminRoute><ReportProducts /></AdminRoute>
             },
-
         ]
     }
-
 ])
 
 export default routes;
